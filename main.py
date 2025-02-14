@@ -1,5 +1,6 @@
 import random
 arr = [["." for j in range(3)] for i in range(3)]
+flag = False
 x = 0
 char = 0
 allowed = ['1', '2', '3']
@@ -92,39 +93,43 @@ def main():
     global char
     global x
     global cpuchar
+    global flag
     if char == 'x':
         cpuchar = 'O'
         char = 'X'
         playermove()
         arr[xp][yp] = char
+        flag = check(char)
         x = x + 1
         if x == 5:
             return
-        if check(cpuchar):
+        if flag == True:
             prtable()
             return
         char = 'O'
         cpumove()
         prtable()
-        if check(cpuchar):
+        flag = check(cpuchar)
+        if flag == True:
             return
         char = 'x'
         main()
     elif char == 'o':
-        print(x)
         cpuchar = 'X'
         char = 'X'
         cpumove()
         prtable()
-        if check(cpuchar):
+        flag = check(cpuchar)
+        if flag == True:
             return
         char = 'O'
         playermove()
         arr[xp][yp] = char
+        flag = check(char)
         x = x + 1
         if x == 5:
             return
-        if check(char):
+        if flag == True:
             prtable()
             return
         char = 'o'
