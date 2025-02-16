@@ -9,8 +9,6 @@ allowed = ['1', '2', '3']
 game_over_1 = False
 
 def player_move():
-    global xp
-    global yp
     xy = input("insert a character in xcoord,ycoord format: ")
     if len(xy) > 3:
         print("The length of input is too long; try again")
@@ -41,8 +39,6 @@ def cpu_move_best(markmove):
     return None
 
 def cpu_move_random():
-    global xcord
-    global ycord
     xcord = random.randint(0, 2)
     ycord = random.randint(0, 2)
     if grid[xcord][ycord] == 'X' or grid[xcord][ycord] == 'O':
@@ -139,7 +135,10 @@ def print_result():
     print("Draw :(")
 
 def play_game():
+    global grid
+    global x
     choose()
+    x = 0
     grid = [["." for j in range(3)] for i in range(3)]
     while True:
         game_over_1 = play_turn()
