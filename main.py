@@ -36,6 +36,7 @@ def cpu_move_best(markmove):
                 grid[row][col] = markmove
                 if check(markmove):
                     grid[row][col] = '.'
+                    return row, col
                 grid[row][col] = '.'
     return None
 
