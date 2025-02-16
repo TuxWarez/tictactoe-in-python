@@ -131,7 +131,7 @@ def play_turn():
             return True
         char = 'o'
 
-def print_result(): # for anybody reading this code tell my why this function stalls the program
+def print_result():
     if game_over:
         print(f'{char} won!')
         return
@@ -141,13 +141,12 @@ def play_game():
     choose()
     grid = [["." for j in range(3)] for i in range(3)]
     while True:
-        play_turn()
         game_over_1 = play_turn()
         if game_over_1:
             return
 
 while True:
     play_game()
- #  print_result()
+    print_result()
     if input("Do you want to play another game? [y/N] ")!="y":
         break
