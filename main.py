@@ -76,7 +76,7 @@ def check(mark):
 def choose():
     global char
     print("choose a character: ", end='')
-    char = input()
+    char = input().lower()
     if char == 'x' or char == 'o':
         return char
     print('Try again;')
