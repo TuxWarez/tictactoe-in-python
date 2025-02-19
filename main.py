@@ -1,12 +1,14 @@
 import random
 import os
 
-grid = [["." for j in range(3)] for i in range(3)]
 game_over = False
 x = 0
 char = 0
 allowed = ['1', '2', '3']
 game_over_1 = False
+
+def clear_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def player_move():
     xy = input("insert a character in xcoord,ycoord format: ")
@@ -76,8 +78,8 @@ def check(mark):
 def choose():
     global char
     print("choose a character: ", end='')
-    char = input().lower()
-    if char == 'x' or char == 'o':
+    char = input().upper()
+    if char == 'X' or char == 'O':
         return char
     print('Try again;')
     choose()
@@ -87,8 +89,7 @@ def play_turn():
     global x
     global cpuchar
     global game_over
-    if char == 'x':
-        char = 'X'
+    if char == 'X':
         player_move()
         game_over = check(char)
         x = x + 1
@@ -101,17 +102,16 @@ def play_turn():
         cpuchar = 'O'
         char = 'O'
         cpu_move()
-        os.system('clear')
+        clear_screen()
         print_table()
         game_over = check(cpuchar)
         if game_over == True:
             return True
-        char = 'x'
-    elif char == 'o':
-        cpuchar = 'X'
         char = 'X'
+    elif char == 'O':
+        cpuchar = 'X'
         cpu_move()
-        os.system('clear')
+        clear_screen()
         print_table()
         game_over = check(cpuchar)
         if game_over == True:
@@ -126,7 +126,7 @@ def play_turn():
             os.system('clear')
             print_table()
             return True
-        char = 'o'
+        char = 'O'
 
 def print_result():
     if game_over:
@@ -139,7 +139,7 @@ def play_game():
     global x
     choose()
     x = 0
-    grid = [["." for j in range(3)] for i in range(3)]
+    grid = [['.'] * 3 for i in range(3)]
     while True:
         game_over_1 = play_turn()
         if game_over_1:
