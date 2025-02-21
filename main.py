@@ -60,9 +60,7 @@ def cpu_move():
 
 def print_table():
     for i in grid:
-        for j in i:
-            print(f"{j}", end=' ')
-        print()
+        print(' '.join(i))
 
 def check(mark):
     if (grid[0][0] == mark and grid[1][1] == mark and grid[2][2] == mark) or (grid[0][2] == mark and grid[1][1] == mark and grid[2][0] == mark):
@@ -77,8 +75,7 @@ def check(mark):
 
 def choose():
     global char
-    print("choose a character: ", end='')
-    char = input().upper()
+    char = input("choose a character: ").upper()
     if char == 'X' or char == 'O':
         return char
     print('Try again;')
@@ -96,7 +93,7 @@ def play_turn():
         if x == 5:
             return True
         if game_over == True:
-            os.system('clear')
+            clear_screen()
             print_table()
             return True
         cpuchar = 'O'
@@ -123,7 +120,7 @@ def play_turn():
         if x == 5:
             return True
         if game_over == True:
-            os.system('clear')
+            clear_screen()
             print_table()
             return True
         char = 'O'
